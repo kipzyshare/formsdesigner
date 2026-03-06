@@ -216,10 +216,11 @@ p {
     opacity: 0;
     transform: translateY(30px);
     transition: all 1.5s ease;
-    margin-bottom: 2rem;
-    max-width: 600px;
+    margin-bottom: 1rem;
+    max-width: 800px;
     text-align: center;
-    font-size: 1.3rem;
+    font-family: var(--font-heading);
+    font-size: 1rem;
     font-weight: 300;
 }
 .line.visible {
@@ -267,10 +268,11 @@ p {
 }
 #page-4 p { 
     font-size: 1.2rem; 
+    font-family: var(--font-heading);
     opacity: 0; 
     animation: fadeIn 2s 1s forwards; 
     text-align: center;
-    color: white;
+    color: var(--off-white);
 }
 .visual-art {
     width: 150px;
@@ -314,7 +316,7 @@ p {
     text-align: center;
     max-width: 800px;
     line-height: 2.2;
-    color: white;
+    color: var(--off-white);
 }
 .final-text p {
     font-size: large;
@@ -322,6 +324,8 @@ p {
     transform: translateY(20px);
     transition: all 3.5s ease;
     margin-bottom: 0.5rem;
+    color: var(--off-white);
+    font-family: var(--font-heading);
 }
 .final-text p.visible {
     opacity: 1;
