@@ -178,27 +178,29 @@ p {
     font-size: 4rem; 
     margin-bottom: 1rem; 
     opacity: 0; 
-    animation: fadeIn 2s forwards; 
+    animation: fadeIn 2s 1s forwards; 
     text-shadow: 0 2px 20px rgba(0,0,0,0.5); 
 }
 #page-1 p { 
     font-size: 1.2rem; 
     opacity: 0; 
-    animation: fadeIn 2s 1s forwards; 
+    animation: fadeIn 2.5s 2s forwards; 
+    text-align: center;
 }
 
 #page-2 {
     background-color: var(--forest-mid);
-    color: var(--off-white);
+    color: var(--moss-green);
 }
 .line {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 1s ease;
-    margin-bottom: 2rem;
-    max-width: 600px;
+    transition: all 1.5s ease;
+    margin-bottom: 1rem;
+    max-width: 800px;
     text-align: center;
-    font-size: 1.3rem;
+    font-family: var(--font-heading);
+    font-size: 1rem;
     font-weight: 300;
 }
 .line.visible {
@@ -209,16 +211,23 @@ p {
 #page-3 {
     background-color: var(--forest-mid);
 }
+#page-3 h1 { 
+    font-size: 3rem; 
+    margin-bottom: 1rem; 
+    opacity: 0; 
+    animation: fadeIn 2s 1s forwards; 
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5); 
+}
 .message-content {
     max-width: 700px;
-    text-align: center;
+    text-align: justify;
     z-index: 2;
 }
 .paragraph {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.8s ease;
-    margin-bottom: 2rem;
+    transition: all 5s ease;
+    margin-bottom: 1rem;
 }
 .paragraph.visible {
     opacity: 1;
@@ -237,6 +246,22 @@ p {
     display: flex;
     justify-content: center;
     align-items: flex-end;
+}
+
+#page-4 h1 { 
+    font-size: 3rem; 
+    margin-bottom: 1rem; 
+    opacity: 0; 
+    animation: fadeIn 2s forwards; 
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5); 
+}
+#page-4 p { 
+    font-size: 1.2rem; 
+    font-family: var(--font-heading);
+    opacity: 0; 
+    animation: fadeIn 2s 1s forwards; 
+    text-align: center;
+    color: var(--off-white);
 }
 
 .willow-trunk {
@@ -321,7 +346,7 @@ p {
     background: linear-gradient(135deg, var(--forest-mid), var(--moss-green));
 }
 .final-text {
-    font-size: 1.6rem;
+    font-size: 2rem;
     font-family: var(--font-heading);
     text-align: center;
     max-width: 800px;
@@ -331,8 +356,10 @@ p {
 .final-text p {
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.8s ease;
-    margin-bottom: 1.5rem;
+    transition: all 3.5s ease;
+    margin-bottom: 0.5rem;
+    color: var(--off-white);
+    font-family: var(--font-heading);
 }
 .final-text p.visible {
     opacity: 1;
@@ -341,6 +368,18 @@ p {
 
 #page-6 {
     background-color: var(--forest-dark);
+}
+#page-6 h1 { 
+    font-size: 3rem; 
+    margin-bottom: 1rem; 
+    opacity: 0; 
+    animation: fadeIn 1.5s forwards; 
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5); 
+}
+#page-6 p { 
+    font-size: 1.2rem; 
+    opacity: 0; 
+    animation: fadeIn 2s forwards; 
 }
 .sparkle {
     position: absolute;
