@@ -1,6 +1,5 @@
 /* --- GLOBAL VARIABLES & RESET --- */
 :root {
-    /* Forest Theme Colors - Lebih gelap dan dalam */
     --forest-dark: #0d1f14;
     --forest-mid: #1a3324;
     --moss-green: #2d5a3d;
@@ -16,8 +15,6 @@
     
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
-    
-    --transition-speed: 1.2s;
 }
 
 * {
@@ -34,7 +31,6 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* --- TYPOGRAPHY --- */
 h1, h2, h3 {
     font-family: var(--font-heading);
     font-weight: 400;
@@ -46,7 +42,6 @@ p {
     color: var(--willow-green);
 }
 
-/* --- UTILITIES --- */
 .container {
     min-height: 100vh;
     display: flex;
@@ -56,9 +51,9 @@ p {
     padding: 2rem;
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
-/* --- BUTTONS --- */
 .btn {
     margin-top: 2rem;
     padding: 1rem 2.5rem;
@@ -76,6 +71,7 @@ p {
     text-decoration: none;
     display: inline-block;
     font-weight: 600;
+    touch-action: manipulation;
 }
 
 .btn:hover {
@@ -85,7 +81,6 @@ p {
     transform: translateY(-2px);
 }
 
-/* --- FOREST BACKGROUND LAYERS --- */
 .forest-bg {
     position: fixed;
     top: 0;
@@ -96,16 +91,6 @@ p {
     pointer-events: none;
 }
 
-.forest-layer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0.3;
-    background-size: cover;
-    background-position: center;
-}
-
-/* Tree Silhouettes */
 .tree-silhouette {
     position: absolute;
     bottom: 0;
@@ -126,7 +111,6 @@ p {
     50% { transform: rotate(2deg); }
 }
 
-/* Mist/Fog Effect */
 .mist {
     position: fixed;
     top: 0;
@@ -143,7 +127,6 @@ p {
     50% { opacity: 0.5; transform: scale(1.1); }
 }
 
-/* --- BACKGROUND SHAPES (Forest Leaves) --- */
 .shape {
     position: absolute;
     border-radius: 50%;
@@ -187,9 +170,6 @@ p {
     66% { transform: translate(-20px, 20px) scale(0.9); }
 }
 
-/* --- PAGE SPECIFIC STYLES --- */
-
-/* Page 1: Opening */
 #page-1 {
     background: radial-gradient(circle at center, var(--forest-mid), var(--forest-dark));
     color: var(--off-white);
@@ -198,16 +178,15 @@ p {
     font-size: 4rem; 
     margin-bottom: 1rem; 
     opacity: 0; 
-    animation: fadeIn 2s 1s forwards; 
+    animation: fadeIn 2s forwards; 
     text-shadow: 0 2px 20px rgba(0,0,0,0.5); 
 }
 #page-1 p { 
     font-size: 1.2rem; 
     opacity: 0; 
-    animation: fadeIn 3s 2s forwards; 
+    animation: fadeIn 2s 1s forwards; 
 }
 
-/* Page 2: Transition */
 #page-2 {
     background-color: var(--forest-mid);
     color: var(--off-white);
@@ -215,12 +194,11 @@ p {
 .line {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 1.5s ease;
-    margin-bottom: 1rem;
-    max-width: 800px;
+    transition: all 1s ease;
+    margin-bottom: 2rem;
+    max-width: 600px;
     text-align: center;
-    font-family: var(--font-heading);
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 300;
 }
 .line.visible {
@@ -228,90 +206,122 @@ p {
     transform: translateY(0);
 }
 
-/* Page 3: Message */
 #page-3 {
     background-color: var(--forest-mid);
 }
-#page-3 h1 { 
-    font-size: 3rem; 
-    margin-bottom: 1rem; 
-    opacity: 0; 
-    animation: fadeIn 2s 1s forwards; 
-    text-shadow: 0 2px 20px rgba(0,0,0,0.5); 
-}
 .message-content {
     max-width: 700px;
-    text-align: justify;
+    text-align: center;
     z-index: 2;
 }
 .paragraph {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 5s ease;
-    margin-bottom: 1rem;
+    transition: all 0.8s ease;
+    margin-bottom: 2rem;
 }
 .paragraph.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Page 4: Moment */
 #page-4 {
     background-color: var(--forest-mid);
 }
-#page-4 h1 { 
-    font-size: 3rem; 
-    margin-bottom: 1rem; 
-    opacity: 0; 
-    animation: fadeIn 2s forwards; 
-    text-shadow: 0 2px 20px rgba(0,0,0,0.5); 
-}
-#page-4 p { 
-    font-size: 1.2rem; 
-    font-family: var(--font-heading);
-    opacity: 0; 
-    animation: fadeIn 2s 1s forwards; 
-    text-align: center;
-    color: var(--off-white);
-}
-.visual-art {
-    width: 150px;
-    height: 150px;
-    border: 2px solid var(--moss-light);
-    border-radius: 50%;
+
+.willow-tree {
     position: relative;
+    width: 300px;
+    height: 400px;
     margin: 3rem auto;
     display: flex;
     justify-content: center;
-    align-items: center;
-    box-shadow: 0 10px 40px rgba(45, 90, 61, 0.4);
-}
-.visual-art::before {
-    content: '';
-    position: absolute;
-    width: 80%;
-    height: 80%;
-    border: 2px solid var(--sage-green);
-    border-radius: 50%;
-    animation: spin 10s linear infinite;
-}
-.visual-art::after {
-    content: '';
-    position: absolute;
-    width: 60%;
-    height: 60%;
-    background: var(--moss-green);
-    border-radius: 50%;
-    opacity: 0.3;
-    animation: pulse 3s ease-in-out infinite;
+    align-items: flex-end;
 }
 
-/* Page 5: Final */
+.willow-trunk {
+    position: absolute;
+    bottom: 0;
+    width: 20px;
+    height: 150px;
+    background: linear-gradient(to right, var(--earth-brown), var(--moss-green));
+    border-radius: 5px 5px 0 0;
+    z-index: 1;
+}
+
+.willow-crown {
+    position: absolute;
+    bottom: 120px;
+    width: 200px;
+    height: 180px;
+    background: radial-gradient(ellipse at center, var(--willow-green) 0%, var(--moss-green) 60%, transparent 100%);
+    border-radius: 50% 50% 40% 40%;
+    z-index: 2;
+    filter: blur(10px);
+    opacity: 0.9;
+}
+
+.branch {
+    position: absolute;
+    width: 3px;
+    height: 80px;
+    background: linear-gradient(to bottom, var(--willow-green), transparent);
+    border-radius: 5px;
+    z-index: 3;
+    animation: branchSway 4s ease-in-out infinite;
+}
+
+.branch-1 { left: 20%; animation-delay: 0s; }
+.branch-2 { left: 30%; animation-delay: 0.5s; }
+.branch-3 { left: 40%; animation-delay: 1s; }
+.branch-4 { left: 50%; animation-delay: 1.5s; }
+.branch-5 { left: 60%; animation-delay: 2s; }
+.branch-6 { left: 70%; animation-delay: 2.5s; }
+.branch-7 { left: 80%; animation-delay: 3s; }
+
+@keyframes branchSway {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+.leaf {
+    position: absolute;
+    width: 8px;
+    height: 15px;
+    background: var(--willow-green);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    z-index: 4;
+    animation: leafFloat 3s ease-in-out infinite;
+}
+
+.branch-1 .leaf { top: 20px; left: -3px; animation-delay: 0s; }
+.branch-2 .leaf { top: 30px; left: -3px; animation-delay: 0.3s; }
+.branch-3 .leaf { top: 40px; left: -3px; animation-delay: 0.6s; }
+.branch-4 .leaf { top: 50px; left: -3px; animation-delay: 0.9s; }
+.branch-5 .leaf { top: 60px; left: -3px; animation-delay: 1.2s; }
+.branch-6 .leaf { top: 70px; left: -3px; animation-delay: 1.5s; }
+.branch-7 .leaf { top: 80px; left: -3px; animation-delay: 1.8s; }
+
+@keyframes leafFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    50% { transform: translateY(5px) rotate(10deg); opacity: 0.7; }
+}
+
+.willow-shadow {
+    position: absolute;
+    bottom: 0;
+    width: 250px;
+    height: 30px;
+    background: radial-gradient(ellipse, var(--forest-dark) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
 #page-5 {
     background: linear-gradient(135deg, var(--forest-mid), var(--moss-green));
 }
 .final-text {
-    font-size: 4rem;
+    font-size: 1.6rem;
     font-family: var(--font-heading);
     text-align: center;
     max-width: 800px;
@@ -319,34 +329,18 @@ p {
     color: var(--off-white);
 }
 .final-text p {
-    font-size: large;
     opacity: 0;
     transform: translateY(20px);
-    transition: all 3.5s ease;
-    margin-bottom: 0.5rem;
-    color: var(--off-white);
-    font-family: var(--font-heading);
+    transition: all 0.8s ease;
+    margin-bottom: 1.5rem;
 }
 .final-text p.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Page 6: Closing */
 #page-6 {
     background-color: var(--forest-dark);
-}
-#page-6 h1 { 
-    font-size: 4rem; 
-    margin-bottom: 1rem; 
-    opacity: 0; 
-    animation: fadeIn 1.5s forwards; 
-    text-shadow: 0 2px 20px rgba(0,0,0,0.5); 
-}
-#page-6 p { 
-    font-size: 1.2rem; 
-    opacity: 0; 
-    animation: fadeIn 2s forwards; 
 }
 .sparkle {
     position: absolute;
@@ -359,13 +353,8 @@ p {
     box-shadow: 0 0 15px var(--moss-light);
 }
 
-/* --- ANIMATIONS --- */
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
-@keyframes spin {
-    100% { transform: rotate(360deg); }
-}
+@keyframes fadeIn { to { opacity: 1; } }
+@keyframes spin { 100% { transform: rotate(360deg); } }
 @keyframes pulse {
     0%, 100% { transform: scale(1); opacity: 0.2; }
     50% { transform: scale(1.2); opacity: 0.4; }
@@ -376,7 +365,6 @@ p {
     100% { transform: scale(1.5); opacity: 0; }
 }
 
-/* --- PAGE TRANSITION OVERLAY --- */
 .page-overlay {
     position: fixed;
     top: 0;
@@ -395,7 +383,6 @@ p {
     pointer-events: all;
 }
 
-/* --- FOREST PARTICLES (Fireflies) --- */
 .firefly {
     position: absolute;
     width: 4px;
@@ -409,20 +396,286 @@ p {
 }
 
 @keyframes fireflyFloat {
-    0%, 100% { 
-        transform: translate(0, 0); 
-        opacity: 0.3;
+    0%, 100% { transform: translate(0, 0); opacity: 0.3; }
+    25% { transform: translate(50px, -30px); opacity: 0.8; }
+    50% { transform: translate(100px, 20px); opacity: 0.5; }
+    75% { transform: translate(50px, 50px); opacity: 0.7; }
+}
+
+/* ============================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================ */
+
+/* Tablet (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    #page-1 h1 { font-size: 3.5rem; }
+    .willow-tree { width: 250px; height: 350px; }
+    .willow-trunk { width: 18px; height: 130px; }
+    .willow-crown { width: 170px; height: 150px; }
+    .branch { height: 70px; }
+    .leaf { width: 7px; height: 12px; }
+    .line { font-size: 1.2rem; }
+    .final-text { font-size: 1.4rem; }
+}
+
+/* Mobile (320px - 767px) */
+@media screen and (max-width: 767px) {
+    .container { padding: 1.5rem; }
+    
+    #page-1 h1 { font-size: 2.5rem; }
+    #page-1 p { font-size: 1rem; }
+    
+    .btn {
+        padding: 0.8rem 2rem;
+        font-size: 0.8rem;
     }
-    25% { 
-        transform: translate(50px, -30px); 
-        opacity: 0.8;
+    
+    .willow-tree {
+        width: 200px;
+        height: 280px;
+        margin: 2rem auto;
     }
-    50% { 
-        transform: translate(100px, 20px); 
-        opacity: 0.5;
+    
+    .willow-trunk {
+        width: 15px;
+        height: 100px;
     }
-    75% { 
-        transform: translate(50px, 50px); 
-        opacity: 0.7;
+    
+    .willow-crown {
+        width: 140px;
+        height: 120px;
+        bottom: 80px;
+    }
+    
+    .branch {
+        width: 2px;
+        height: 60px;
+    }
+    
+    .leaf {
+        width: 6px;
+        height: 10px;
+    }
+    
+    .line {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .message-content {
+        max-width: 90%;
+    }
+    
+    .paragraph {
+        margin-bottom: 1.5rem;
+    }
+    
+    .final-text {
+        font-size: 1.2rem;
+        line-height: 1.8;
+    }
+    
+    .final-text p {
+        margin-bottom: 1rem;
+    }
+    
+    .tree-silhouette {
+        width: 150px;
+        height: 300px;
+    }
+    
+    .shape-1 {
+        width: 300px;
+        height: 300px;
+        top: -100px;
+        left: -100px;
+    }
+    
+    .shape-2 {
+        width: 400px;
+        height: 400px;
+        bottom: -150px;
+        right: -150px;
+    }
+    
+    .shape-3 {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .willow-shadow {
+        width: 180px;
+        height: 20px;
+    }
+}
+
+/* Small Mobile (320px - 480px) */
+@media screen and (max-width: 480px) {
+    .container { padding: 1rem; }
+    
+    #page-1 h1 { font-size: 2rem; }
+    #page-1 p { font-size: 0.9rem; }
+    
+    .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
+    
+    .willow-tree {
+        width: 160px;
+        height: 220px;
+        margin: 1.5rem auto;
+    }
+    
+    .willow-trunk {
+        width: 12px;
+        height: 80px;
+    }
+    
+    .willow-crown {
+        width: 110px;
+        height: 100px;
+        bottom: 60px;
+        filter: blur(8px);
+    }
+    
+    .branch {
+        width: 2px;
+        height: 50px;
+    }
+    
+    .leaf {
+        width: 5px;
+        height: 8px;
+    }
+    
+    .line {
+        font-size: 1rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .message-content {
+        max-width: 95%;
+    }
+    
+    .paragraph {
+        margin-bottom: 1.2rem;
+    }
+    
+    .final-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+    
+    .final-text p {
+        margin-bottom: 0.8rem;
+    }
+    
+    .tree-silhouette {
+        width: 120px;
+        height: 250px;
+    }
+    
+    .shape-1 {
+        width: 250px;
+        height: 250px;
+        top: -80px;
+        left: -80px;
+    }
+    
+    .shape-2 {
+        width: 300px;
+        height: 300px;
+        bottom: -120px;
+        right: -120px;
+    }
+    
+    .shape-3 {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .willow-shadow {
+        width: 140px;
+        height: 15px;
+    }
+    
+    #page-6 h1 {
+        font-size: 2.5rem;
+    }
+    
+    #page-6 p {
+        font-size: 1rem;
+    }
+}
+
+/* Landscape Mobile */
+@media screen and (max-width: 767px) and (orientation: landscape) {
+    .container {
+        padding: 1rem;
+    }
+    
+    #page-1 h1 {
+        font-size: 2rem;
+    }
+    
+    .willow-tree {
+        width: 180px;
+        height: 250px;
+    }
+    
+    .willow-trunk {
+        width: 14px;
+        height: 90px;
+    }
+    
+    .willow-crown {
+        width: 120px;
+        height: 110px;
+    }
+}
+
+/* High DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .shape {
+        filter: blur(60px);
+    }
+    
+    .mist {
+        background: radial-gradient(ellipse at center, var(--mist-white) 0%, transparent 70%);
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .forest-bg,
+    .shape,
+    .firefly,
+    .sparkle,
+    .page-overlay {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .btn {
+        display: none;
     }
 }
