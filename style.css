@@ -1,0 +1,424 @@
+/* --- GLOBAL VARIABLES & RESET --- */
+:root {
+    /* Forest Theme Colors - Lebih gelap dan dalam */
+    --forest-dark: #0d1f14;
+    --forest-mid: #1a3324;
+    --moss-green: #2d5a3d;
+    --moss-light: #4a7c59;
+    --sage-green: #6b8f73;
+    --willow-green: #8fb392;
+    --earth-brown: #3d2e22;
+    --soft-beige: #f2efe6;
+    --off-white: #fafaf7;
+    --text-dark: #1a2e22;
+    --accent-gold: #d4af37;
+    --mist-white: rgba(255, 255, 255, 0.05);
+    
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    
+    --transition-speed: 1.2s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--forest-dark);
+    color: var(--off-white);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+}
+
+p {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: var(--willow-green);
+}
+
+/* --- UTILITIES --- */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- BUTTONS --- */
+.btn {
+    margin-top: 2rem;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    border: 2px solid var(--moss-light);
+    color: var(--moss-light);
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background: var(--moss-light);
+    color: var(--forest-dark);
+    box-shadow: 0 0 30px rgba(74, 124, 89, 0.8);
+    transform: translateY(-2px);
+}
+
+/* --- FOREST BACKGROUND LAYERS --- */
+.forest-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+}
+
+.forest-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Tree Silhouettes */
+.tree-silhouette {
+    position: absolute;
+    bottom: 0;
+    width: 200px;
+    height: 400px;
+    background: linear-gradient(to top, var(--forest-dark), transparent);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    opacity: 0.4;
+}
+
+.tree-1 { left: 5%; animation: sway 8s ease-in-out infinite; }
+.tree-2 { right: 5%; animation: sway 10s ease-in-out infinite; }
+.tree-3 { left: 20%; animation: sway 12s ease-in-out infinite; }
+.tree-4 { right: 20%; animation: sway 9s ease-in-out infinite; }
+
+@keyframes sway {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+}
+
+/* Mist/Fog Effect */
+.mist {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, var(--mist-white) 0%, transparent 70%);
+    z-index: -1;
+    animation: mistMove 20s ease-in-out infinite;
+}
+
+@keyframes mistMove {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+}
+
+/* --- BACKGROUND SHAPES (Forest Leaves) --- */
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    z-index: -1;
+    animation: float 20s infinite ease-in-out;
+}
+
+.shape-1 {
+    width: 500px;
+    height: 500px;
+    background: var(--moss-green);
+    top: -150px;
+    left: -150px;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 600px;
+    height: 600px;
+    background: var(--forest-mid);
+    bottom: -200px;
+    right: -200px;
+    animation-delay: -5s;
+}
+
+.shape-3 {
+    width: 400px;
+    height: 400px;
+    background: var(--sage-green);
+    top: 40%;
+    left: 60%;
+    opacity: 0.2;
+    animation-delay: -10s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+/* --- PAGE SPECIFIC STYLES --- */
+
+/* Page 1: Opening */
+#page-1 {
+    background: radial-gradient(circle at center, var(--forest-mid), var(--forest-dark));
+    color: var(--off-white);
+}
+#page-1 h1 { 
+    font-size: 4rem; 
+    margin-bottom: 1rem; 
+    opacity: 0; 
+    animation: fadeIn 2s 1s forwards; 
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5); 
+}
+#page-1 p { 
+    font-size: 1.2rem; 
+    opacity: 0; 
+    animation: fadeIn 3s 2s forwards; 
+}
+
+/* Page 2: Transition */
+#page-2 {
+    background-color: var(--forest-mid);
+    color: var(--off-white);
+}
+.line {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.5s ease;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 300;
+}
+.line.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Page 3: Message */
+#page-3 {
+    background-color: var(--forest-mid);
+}
+#page-3 h1 { 
+    font-size: 3rem; 
+    margin-bottom: 1rem; 
+    opacity: 0; 
+    animation: fadeIn 2s 1s forwards; 
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5); 
+}
+.message-content {
+    max-width: 700px;
+    text-align: justify;
+    z-index: 2;
+}
+.paragraph {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 5s ease;
+    margin-bottom: 1rem;
+}
+.paragraph.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Page 4: Moment */
+#page-4 {
+    background-color: var(--forest-mid);
+}
+#page-4 h1 { 
+    font-size: 3rem; 
+    margin-bottom: 1rem; 
+    opacity: 0; 
+    animation: fadeIn 2s forwards; 
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5); 
+}
+#page-4 p { 
+    font-size: 1.2rem; 
+    opacity: 0; 
+    animation: fadeIn 2s 1s forwards; 
+    text-align: center;
+    color: white;
+}
+.visual-art {
+    width: 150px;
+    height: 150px;
+    border: 2px solid var(--moss-light);
+    border-radius: 50%;
+    position: relative;
+    margin: 3rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 40px rgba(45, 90, 61, 0.4);
+}
+.visual-art::before {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    border: 2px solid var(--sage-green);
+    border-radius: 50%;
+    animation: spin 10s linear infinite;
+}
+.visual-art::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    background: var(--moss-green);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+/* Page 5: Final */
+#page-5 {
+    background: linear-gradient(135deg, var(--forest-mid), var(--moss-green));
+}
+.final-text {
+    font-size: 4rem;
+    font-family: var(--font-heading);
+    text-align: center;
+    max-width: 800px;
+    line-height: 2.2;
+    color: white;
+}
+.final-text p {
+    font-size: large;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 3.5s ease;
+    margin-bottom: 0.5rem;
+}
+.final-text p.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Page 6: Closing */
+#page-6 {
+    background-color: var(--forest-dark);
+}
+#page-6 h1 { 
+    font-size: 4rem; 
+    margin-bottom: 1rem; 
+    opacity: 0; 
+    animation: fadeIn 1.5s forwards; 
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5); 
+}
+#page-6 p { 
+    font-size: 1.2rem; 
+    opacity: 0; 
+    animation: fadeIn 2s forwards; 
+}
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--moss-light);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: sparkleAnim 2s linear forwards;
+    box-shadow: 0 0 15px var(--moss-light);
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.2; }
+    50% { transform: scale(1.2); opacity: 0.4; }
+}
+@keyframes sparkleAnim {
+    0% { transform: scale(0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* --- PAGE TRANSITION OVERLAY --- */
+.page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--forest-dark);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+}
+
+.page-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* --- FOREST PARTICLES (Fireflies) --- */
+.firefly {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-gold);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fireflyFloat 15s infinite ease-in-out;
+    opacity: 0.6;
+    box-shadow: 0 0 10px var(--accent-gold);
+}
+
+@keyframes fireflyFloat {
+    0%, 100% { 
+        transform: translate(0, 0); 
+        opacity: 0.3;
+    }
+    25% { 
+        transform: translate(50px, -30px); 
+        opacity: 0.8;
+    }
+    50% { 
+        transform: translate(100px, 20px); 
+        opacity: 0.5;
+    }
+    75% { 
+        transform: translate(50px, 50px); 
+        opacity: 0.7;
+    }
+}
